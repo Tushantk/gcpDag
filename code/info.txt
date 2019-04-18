@@ -1,0 +1,35 @@
+gce_zone us-central1-a
+gcp_project able-cogency-234306
+gcs_bucket gs://able-cogency-234306
+
+
+gcp_db_instance gcppoc
+gcp_db_name recommendation_spark
+
+
+Permisssions:
+
+https://developers.google.com/apis-explorer/?hl=en_US#p/sqladmin/v1beta4/sql.users.list?project=able-cogency-234306&instance=testddd&_h=1&
+
+Give permission to SQL service account with below 3 roles:
+Storage Admin
+Storage Object Admin
+Storage Object Viewer
+
+Install library
+
+sudo pip install --upgrade google-api-python-client
+sudo pip install PyMySQL
+pip install pandas --user
+pip install joblib --user
+
+Cloud shell IP Address: 
+gcloud compute instances list
+
+Whitelisting
+gcloud sql connect rental2 --user=root --quiet -- returns ip address
+
+gcloud sql instances patch [INSTANCE_NAME] --assign-ip
+
+whitelist for dataproc
+https://github.com/GoogleCloudPlatform/dataproc-initialization-actions/tree/master/cloud-sql-proxy
